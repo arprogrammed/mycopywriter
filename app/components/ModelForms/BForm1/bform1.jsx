@@ -81,7 +81,7 @@ export default function Brand1(){
                         />
                     </label>
                     <br />
-                    <label>Product Brand's Website
+                    <label>Product Brand&#39;s Website
                         <input
                         type="text"
                         value={pBSite}
@@ -96,7 +96,6 @@ export default function Brand1(){
                         onChange={(e) => setpCategory(e.target.value)}
                         />
                     </label>
-                    {/* Add more input fields here */}
                     <br />
                     <button type="button" onClick={handleGenerate}>
                         Write My Copy!
