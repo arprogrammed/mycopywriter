@@ -1,0 +1,16 @@
+.container {
+    width: 100%;
+    max-height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.navbar {
+    padding-right: 30px;
+}
+
+.navbar a {
+    padding: 0px 10px;
+}
