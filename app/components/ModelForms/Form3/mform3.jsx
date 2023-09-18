@@ -55,12 +55,12 @@ export default function Form3(){
 
             } else {
             // Catch for an error in a response
-            console.error('Error generating data:', response.statusText);
+            console.error(`Error generating data:`, response.statusText);
             }
             
         } catch (error) {
             // Catch for failure in the API call
-            console.error('Error generating data:', error);
+            console.error(`Error generating data:`, error);
         };
 
     };

@@ -1,5 +1,6 @@
 'use client'
 import {useSession} from 'next-auth/react';
+import { Link } from 'next';
 
 export default function AIGen({ respy }) {
     const { data: session } = useSession()
