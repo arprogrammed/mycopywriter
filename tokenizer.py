@@ -12,5 +12,3 @@ def num_tokens(string: str, encoding_name: str) -> int:
 result = num_tokens(sys.argv[1], sys.argv[2])
 result2 = str(result)
 sys.argv.append(result2)
-
-print(sys.argv[3])

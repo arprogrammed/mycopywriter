@@ -3,7 +3,7 @@ import { spawn } from 'child_process';
 export async function getCount(text: string) {
 
   const tkc = new Promise<string>((resolve, reject) => {
-      const tokcount = spawn("python", ["tokenizer.py", `${text}`, "cl100k_base"]);
+      const tokcount = spawn("python3", ["tokenizer.py", `${text}`, "cl100k_base"]);
     
       tokcount.stdout.on('data', (data: Buffer) => {
         resolve(data.toString().trim());
