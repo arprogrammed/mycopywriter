@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getCount } from '../../lib/tokenize';
+import { getCount2 } from '../../lib/tokenize2';
 import { getResAI } from '../../lib/aitouch';
 import { mform2, mform3, bform1 } from '../../lib/formats';
 
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     };
     console.log(generatedData);
 
-    let [tokenCtOut, myRes] = await Promise.allSettled([getCount(generatedData),getResAI(generatedData)]);
+    let [tokenCtOut, myRes] = await Promise.allSettled([getCount2(generatedData),getResAI(generatedData)]);
     console.log(tokenCtOut);
 
     if(myRes !== null) {
