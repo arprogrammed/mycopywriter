@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { getCount2 } from '../../lib/tokenize2';
 import { getResAI } from '../../lib/aitouch';
 import { mform2, mform3, bform1 } from '../../lib/formats';
 
@@ -27,10 +26,8 @@ export async function POST(req: Request) {
         NextResponse.json({ error: 'Error Generating Form Model' });
         break;
     };
-    console.log(generatedData);
 
-    let [tokenCtOut, myRes] = await Promise.allSettled([getCount2(generatedData),getResAI(generatedData)]);
-    console.log(tokenCtOut);
+    let myRes = await Promise.resolve(getResAI(generatedData));
 
     if(myRes !== null) {
       return NextResponse.json({ myRes });
