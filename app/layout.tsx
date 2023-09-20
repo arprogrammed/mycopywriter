@@ -1,19 +1,7 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Kalam, Ubuntu } from 'next/font/google'
-import AuthProvider from './components/AuthProvider/AuthProvider'
-
-const kalam = Kalam({ 
-  weight: '700',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const unbuntu = Ubuntu({ 
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-});
+import './globals.css';
+import type { Metadata } from 'next';
+import AuthProvider from './components/AuthProvider/AuthProvider';
+import { ubuntu } from '@/app/fonts';
 
 export const metadata: Metadata = {
   title: 'Copy Writer AI',
@@ -30,7 +18,7 @@ export default function RootLayout({
         <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         </head>
-        <body className={unbuntu.className}>
+        <body className={ubuntu.className}>
           <AuthProvider>
             {children}
           </AuthProvider>
