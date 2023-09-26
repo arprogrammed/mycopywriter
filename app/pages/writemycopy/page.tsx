@@ -1,6 +1,6 @@
 'use client'
-import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
+import type { NextPage } from 'next/types';
+import { useSession } from 'next-auth/react';
 import styles from './page.module.css';
 import React, { useState } from 'react';
 import HeaderCust from "@/app/components/Header/header";
@@ -34,16 +34,14 @@ const WriteMyCopy: NextPage = () => {
       return (
           <main className={styles.main}>
           <HeaderCust />
-          <div>
-            <select onChange={(e) => setformType(e.target.value)} defaultValue="mform2">
-              <option value="mform2">2 Paragraph 3rd-Party</option>
-              <option value="mform3">3 Paragraph 3rd-Party</option>
-              <option value="bform1">Brand Paragraph 3rd-Party</option>
-            </select>
-          </div>
-          <div>
-            {handleChange(formType)}
-          </div>
+            <div className={styles.form}>
+              <select className={styles.select} onChange={(e) => setformType(e.target.value)} defaultValue="mform2">
+                <option value="mform2">2 Paragraph 3rd-Party</option>
+                <option value="mform3">3 Paragraph 3rd-Party</option>
+                <option value="bform1">Brand Paragraph 3rd-Party</option>
+              </select>
+              {handleChange(formType)}
+            </div>
           </main>
         );
 

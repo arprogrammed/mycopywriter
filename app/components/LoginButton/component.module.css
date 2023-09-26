@@ -1,0 +1,49 @@
+.btn_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 5%;
+}
+
+.message {
+  width: 120px;
+}
+
+.button_15 {
+  background-image: linear-gradient(#fca3a6, #ff8488);
+  border: 1px solid #e49497;
+  border-radius: 6px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: block;
+  font-family: var(--ubuntu-font);
+  font-size: 16px;
+  min-width: 30px;
+  overflow: visible;
+  padding: 6px 12px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-text-stroke: 0.25px;
+  -webkit-text-stroke-color: #FFFFFF;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin-left: 12px;  
+}
+
+.button_15:disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+.button_15:hover {
+  background-image: linear-gradient(#fdc3c5, #ffa7a9);
+  border-color: #e4aeb0;
+  text-decoration: none;
+}
+
+.button_15:active {
+  background-image: linear-gradient(#fca3a6, #ff8488);
+  border-color: #e4aeb0;
+  outline: none;
+}

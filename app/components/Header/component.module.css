@@ -1,16 +1,27 @@
 .container {
     width: 100%;
-    max-height: 50px;
+    height: 4vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 2% 0 2%;
+    background-color: #feece4;
 }
 
 .navbar {
-    padding-right: 30px;
+    width: 100%;
+    align-items: center;
 }
 
-.navbar a {
-    padding: 0px 10px;
+.navbar a:first-child {
+    font-size: xx-large;
+    padding: 0 5% 0 0;
+}
+
+.gradient {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(0deg, rgba(250,227,217,1) 1%, rgba(219,199,191,1) 50%, rgba(254,236,228,1) 80%);
 }

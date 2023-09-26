@@ -1,6 +1,6 @@
 'use client'
 import { useSession } from 'next-auth/react';
-import styles from './component.module.css';
+import styles from '@/app/components/ModelForms/component.module.css';
 import React, { useState } from 'react';
 import AIGen from '@/app/components/GeneratedAIResp/respy'
 
@@ -61,9 +61,8 @@ export default function Brand1(){
 
     if (session) {
         return (
-            <main className={styles.main}>
-                <div>
-                    <h1>Where Do I Start?</h1>
+            <main className={styles.form_main}>
+                    <h2>Where Do I Start?</h2>
                     <form>
                     <label>Your Website
                         <input
@@ -72,7 +71,6 @@ export default function Brand1(){
                         onChange={(e) => setpSite(e.target.value)}
                         />
                     </label>
-                    <br />
                     <label>Product Brand
                         <input
                         type="text"
@@ -80,7 +78,6 @@ export default function Brand1(){
                         onChange={(e) => setpBrand(e.target.value)}
                         />
                     </label>
-                    <br />
                     <label>Product Brand&#39;s Website
                         <input
                         type="text"
@@ -88,7 +85,6 @@ export default function Brand1(){
                         onChange={(e) => setpBSite(e.target.value)}
                         />
                     </label>
-                    <br />
                     <label>Product Category
                         <input
                         type="text"
@@ -96,13 +92,11 @@ export default function Brand1(){
                         onChange={(e) => setpCategory(e.target.value)}
                         />
                     </label>
-                    <br />
                     <button type="button" onClick={handleGenerate}>
                         Write My Copy!
                     </button>
                     </form>
                     <AIGen respy={aigene} />
-                </div>
             </main>
         );
     } else {

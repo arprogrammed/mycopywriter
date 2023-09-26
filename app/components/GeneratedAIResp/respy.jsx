@@ -4,15 +4,11 @@ import { Link } from 'next';
 
 export default function AIGen({ respy }) {
     const { data: session } = useSession()
-    const copyText = () => {
-        navigator.clipboard.writeText(`${respy}`)
-    };
 
     if (session) {
         return (
             <>
                 <div>
-                    <button id="aiCopybtn" href={copyText()}>Copy Text</button>
                     <textarea id="aiText" defaultValue={`${respy}`}>
                     </textarea>
                 </div>

@@ -1,6 +1,6 @@
 'use client'
 import { useSession } from 'next-auth/react';
-import styles from './component.module.css';
+import styles from '@/app/components/ModelForms/component.module.css';
 import React, { useState } from 'react';
 import AIGen from '@/app/components/GeneratedAIResp/respy'
 
@@ -63,9 +63,8 @@ export default function Form2(){
 
     if (session) {
         return (
-            <main className={styles.main}>
-                <div>
-                    <h1>Where Do I Start?</h1>
+            <main className={styles.form_main}>
+                    <h2>Where Do I Start?</h2>
                     <form>
                     <label>Your Website
                         <input
@@ -74,7 +73,6 @@ export default function Form2(){
                         onChange={(e) => setpSite(e.target.value)}
                         />
                     </label>
-                    <br />
                     <label>Product Title
                         <input
                         type="text"
@@ -82,7 +80,6 @@ export default function Form2(){
                         onChange={(e) => setpTitle(e.target.value)}
                         />
                     </label>
-                    <br />
                     <label>Product Styles
                         <input
                         type="text"
@@ -90,7 +87,6 @@ export default function Form2(){
                         onChange={(e) => setpStyles(e.target.value)}
                         />
                     </label>
-                    <br />
                     <label>Product Colors
                         <input
                         type="text"
@@ -98,7 +94,6 @@ export default function Form2(){
                         onChange={(e) => setpColors(e.target.value)}
                         />
                     </label>
-                    <br />
                     <label>Product Category
                         <input
                         type="text"
@@ -107,13 +102,11 @@ export default function Form2(){
                         />
                     </label>
                     {/* Add more input fields here */}
-                    <br />
                     <button type="button" onClick={handleGenerate}>
                         Write My Copy!
                     </button>
                     </form>
                     <AIGen respy={aigene} />
-                </div>
             </main>
         );
     } else {
