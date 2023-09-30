@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import styles from './page.module.css';
 import React, { useState } from 'react';
 import HeaderCust from "@/app/components/Header/header";
+import FooterCust from "@/app/components/Footer/footer";
 import Form3 from "@/app/components/ModelForms/Form3/mform3";
 import Form2 from "@/app/components/ModelForms/Form2/mform2";
 import Brand1 from "@/app/components/ModelForms/BForm1/bform1";
@@ -42,6 +43,7 @@ const WriteMyCopy: NextPage = () => {
               </select>
               {handleChange(formType)}
             </div>
+          <FooterCust />
           </main>
         );
 
@@ -50,6 +52,7 @@ const WriteMyCopy: NextPage = () => {
           <main className={styles.main}>
               <div>
                 <HeaderCust />
+                <FooterCust />
               </div>
           </main>
       );

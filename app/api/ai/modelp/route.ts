@@ -3,41 +3,104 @@ import { getResAI } from '../../lib/aitouch';
 import { mform2, mform3, bform1 } from '../../lib/formats';
 
 export async function POST(req: Request) {
-
   try {
-    // Inputs deconstruction and clean/validation
-    const { formId, pSite, pTitle, pStyles, pColors, pBrand, pBSite, pCategory } = await req.json();
-    const styles = {pStyles: pStyles.join(', ')};
-    const colors = {pColors: pColors.join(', ')};
-    const form = formId.id;
+    const resp = await req.json();
+    const form = resp.formId.id;
 
-    let generatedData = '';
-    switch (form) {
-      case 'mform2':
-        generatedData = await mform2(pSite, pTitle, styles.pStyles, colors.pColors, pCategory);
-        break;
-      case 'mform3':
-        generatedData = await mform3(pSite, pTitle, styles.pStyles, colors.pColors, pBrand, pBSite, pCategory);
-        break;
-      case 'bform1':
-        generatedData = await bform1(pSite, pBrand, pBSite, pCategory);
-        break;
-      default:
-        NextResponse.json({ error: 'Error Generating Form Model' });
-        break;
-    };
+    if (form == 'mform2') {
+      try {
+        const { pSite, pTitle, pStyles, pColors, pCategory } = resp;
+        const styles = {pStyles: pStyles.join(', ')};
+        const colors = {pColors: pColors.join(', ')};
 
-    let myRes = await Promise.resolve(getResAI(generatedData));
+        const generatedData = await mform2(pSite, pTitle, styles.pStyles, colors.pColors, pCategory);
 
-    if(myRes !== null) {
-      return NextResponse.json({ myRes });
+        let myRes = await Promise.resolve(getResAI(generatedData));
+
+        if(myRes !== null) {
+          return NextResponse.json({ myRes });
+        } else {
+          return NextResponse.json({ error: 'Error Generating MForm2 Response' });
+        };
+
+      } catch (err) {
+        NextResponse.json({ error: 'Error, Try Block, API MForm2',  err });
+      };
+    } else if (form == 'mform3') {
+      try {
+        const { pSite, pTitle, pStyles, pColors, pBrand, pBSite, pCategory } = resp;
+        const styles = {pStyles: pStyles.join(', ')};
+        const colors = {pColors: pColors.join(', ')};
+
+        const generatedData = await mform3(pSite, pTitle, styles.pStyles, colors.pColors, pBrand, pBSite, pCategory);
+
+        let myRes = await Promise.resolve(getResAI(generatedData));
+
+        if(myRes !== null) {
+          return NextResponse.json({ myRes });
+        } else {
+          return NextResponse.json({ error: 'Error Generating MForm3 Response' });
+        };
+
+      } catch (err) {
+        NextResponse.json({ error: 'Error, Try Block, API MForm3',  err });
+      };
     } else {
-      return NextResponse.json({ error: 'Error Generating Data' });
-    };
+      try {
+        const { pSite, pBrand, pBSite, pCategory } = resp;
 
+        const generatedData = await bform1(pSite, pBrand, pBSite, pCategory);
+
+        let myRes = await Promise.resolve(getResAI(generatedData));
+
+        if(myRes !== null) {
+          return NextResponse.json({ myRes });
+        } else {
+          return NextResponse.json({ error: 'Error Generating BForm Response' });
+        };
+
+      } catch (err) {
+        NextResponse.json({ error: 'Error, Try Block, API BForm',  err });
+      };
+    };
   } catch (err) {
-    return NextResponse.json({ error: 'Internal Server Error' });
-  }
+    NextResponse.json({ error: 'Error, Try Block, API POST Func',  err });
+  };
 };
+
+
+
+  // Inputs deconstruction and clean/validation
+  //   const { pSite, pTitle, pStyles, pColors, pBrand, pBSite, pCategory } = await req.json() || {};
+  //   const styles = {pStyles: pStyles.join(', ')};
+  //   const colors = {pColors: pColors.join(', ')};
+
+  //   let generatedData = '';
+  //   switch (form) {
+  //     case 'mform2':
+  //       generatedData = await mform2(pSite, pTitle, styles.pStyles, colors.pColors, pCategory);
+  //       break;
+  //     case 'mform3':
+  //       generatedData = await mform3(pSite, pTitle, styles.pStyles, colors.pColors, pBrand, pBSite, pCategory);
+  //       break;
+  //     case 'bform1':
+  //       generatedData = await bform1(pSite, pBrand, pBSite, pCategory);
+  //       break;
+  //     default:
+  //       NextResponse.json({ error: 'Error Generating Form Model' });
+  //       break;
+  //   };
+
+  //   let myRes = await Promise.resolve(getResAI(generatedData));
+
+  //   if(myRes !== null) {
+  //     return NextResponse.json({ myRes });
+  //   } else {
+  //     return NextResponse.json({ error: 'Error Generating Data' });
+  //   };
+
+  // } catch (err) {
+  //   return NextResponse.json({ error: 'Internal Server Error', err });
+  // }
 
 

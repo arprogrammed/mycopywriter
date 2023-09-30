@@ -25,7 +25,7 @@ export default function HeaderCust(){
             <>
             <div className={styles.container}>
                 <div className={styles.navbar}>
-                    <Link href={'/'}>Home</Link>
+                    <Link className={kalam.className} href={'/'}>CopyWriterAI</Link>
                 </div>
                 <LoginButt />
             </div>

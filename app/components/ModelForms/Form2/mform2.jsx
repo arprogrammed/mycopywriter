@@ -2,12 +2,14 @@
 import { useSession } from 'next-auth/react';
 import styles from '@/app/components/ModelForms/component.module.css';
 import React, { useState } from 'react';
-import AIGen from '@/app/components/GeneratedAIResp/respy'
+import AIGen from '@/app/components/GeneratedAIResp/respy';
+import Loading from '@/app/loading';
 
 export default function Form2(){ 
     const { data: session } = useSession();
     const formId = {id: 'mform2'};
-    const [aigene, setAigene] = useState('Your Response Will Appear Here');
+    const [isLoading, setLoad] = useState(false);
+    const [aigene, setAigene] = useState('Your response will appear here...');
     const [pSite, setpSite] = useState('');
     const [pTitle, setpTitle] = useState('');
     const [pStyles, setpStyles] = useState('');
@@ -16,9 +18,9 @@ export default function Form2(){
 
     // onClick function for API to generate copy
     const handleGenerate = async () => {
-
         // try/catch to make the API call
         try {
+            setLoad(true);
             // useState values cleaning for pass to API
             const styleList = pStyles.split(',').map((style) => style.trim());
             const colorList = pColors.split(',').map((color) => color.trim());
@@ -42,21 +44,22 @@ export default function Form2(){
 
             // Logic to catch the resp error
             if (response.ok) {
-            const { myRes } = await response.json();
-            // Handle the data from the API response if needed
-            const { status, value } = myRes;
-            console.log(value);
-            setAigene(value);
-
+                const { myRes } = await response.json();
+                // Handle the data from the API response if needed
+                console.log(myRes);
+                setAigene(`${myRes}`);
+                setLoad(false);
 
             } else {
-            // Catch for an error in a response
-            console.error(`Error generating data:`, response.statusText);
+                // Catch for an error in a response
+                console.error(`Error generating data:`, response.statusText);
+                setLoad(false);
             }
             
         } catch (error) {
             // Catch for failure in the API call
             console.error(`Error generating data:`, error);
+            setLoad(false);
         };
 
     };
@@ -64,13 +67,15 @@ export default function Form2(){
     if (session) {
         return (
             <main className={styles.form_main}>
-                    <h2>Where Do I Start?</h2>
-                    <form>
+                <h2>2 Paragraph Product Copy For Third-Party</h2>
+                <p>This form can be used to write a two paragraph product copy for a third-party brand.</p>
+                <form>
                     <label>Your Website
                         <input
                         type="text"
                         value={pSite}
                         onChange={(e) => setpSite(e.target.value)}
+                        placeholder='example.com'
                         />
                     </label>
                     <label>Product Title
@@ -78,6 +83,7 @@ export default function Form2(){
                         type="text"
                         value={pTitle}
                         onChange={(e) => setpTitle(e.target.value)}
+                        placeholder='My Super Cool Product'
                         />
                     </label>
                     <label>Product Styles
@@ -85,6 +91,7 @@ export default function Form2(){
                         type="text"
                         value={pStyles}
                         onChange={(e) => setpStyles(e.target.value)}
+                        placeholder='modern, organic, etc'
                         />
                     </label>
                     <label>Product Colors
@@ -92,6 +99,7 @@ export default function Form2(){
                         type="text"
                         value={pColors}
                         onChange={(e) => setpColors(e.target.value)}
+                        placeholder='orange, umber, etc'
                         />
                     </label>
                     <label>Product Category
@@ -99,14 +107,16 @@ export default function Form2(){
                         type="text"
                         value={pCategory}
                         onChange={(e) => setpCategory(e.target.value)}
+                        placeholder='product type'
                         />
                     </label>
                     {/* Add more input fields here */}
                     <button type="button" onClick={handleGenerate}>
                         Write My Copy!
                     </button>
-                    </form>
-                    <AIGen respy={aigene} />
+                    <p>Multi-paragraph copy may take up to 25 secs to generate.</p>
+                </form>
+                { isLoading ? (<Loading />) : (<AIGen respy={aigene} />)}
             </main>
         );
     } else {

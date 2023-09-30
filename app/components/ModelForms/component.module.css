@@ -9,14 +9,32 @@
 .form_main h2 {
     width: 100%;
     text-align: center;
-    padding: 2%;
+    padding: 2% 2% 0 2%;
+}
+
+.form_main > p {
+    width: 90%;
+    text-align: center;
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0 0 3% 0;
+    -webkit-text-stroke: 0.2;
 }
 
 .form_main form {
     width: 60%;
     display: flex;
     flex-direction: column;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
+}
+
+.form_main > form > p {
+    width: 100%;
+    text-align: center;
+    font-size: x-small;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 1% 0 3% 0;
+    -webkit-text-stroke: 0;
 }
 
 .form_main form label {
@@ -31,19 +49,38 @@
 
 .form_main form input[type=text] {
     outline: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: 1px none;
     border-radius: 4px;
+    border: 2px inset #e8e8e8;
+    -webkit-text-stroke: 0;
 }
 
 .form_main form input[type=text]:focus {
     outline: none;
-    border: 2px solid #ff8488;
+    border: 2px inset #ff8488;
     border-radius: 4px;
+    -webkit-text-stroke: 0;
 }
 
-.form_main textarea {
+.resp {
     width: 90%;
+    height: 100%;
+    padding: 2%;
+    margin-bottom: 1%;
+}
+
+.resp textarea {
+    width: 100%;
     height: 30vh;
+    resize: none;
+    padding: 2%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    border: 3px inset #e8e8e8;
+    -webkit-text-stroke: 0;
 }
 
 .form_main form button {

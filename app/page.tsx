@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import styles from './page.module.css';
 import React from 'react';
 import HeaderCust from './components/Header/header';
-import LoginButt from "./components/LoginButton/login-btn";
+import FooterCust from "./components/Footer/footer";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -13,9 +13,9 @@ const Home: NextPage = () => {
     return (
       <div>
         <main className={styles.main}>
-          <div>
             <HeaderCust />
-          </div>
+            <div></div>
+            <FooterCust />
         </main>
       </div>
     );
@@ -23,9 +23,9 @@ const Home: NextPage = () => {
     return (
       <div>
         <main className={styles.main}>
-          <div>
-            <LoginButt />
-          </div>
+            <HeaderCust />
+            <div></div>
+            <FooterCust />
         </main>
       </div>
     );

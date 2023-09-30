@@ -2,12 +2,14 @@
 import { useSession } from 'next-auth/react';
 import styles from '@/app/components/ModelForms/component.module.css';
 import React, { useState } from 'react';
-import AIGen from '@/app/components/GeneratedAIResp/respy'
+import AIGen from '@/app/components/GeneratedAIResp/respy';
+import Loading from '@/app/loading';
 
 export default function Brand1(){ 
     const { data: session } = useSession();
     const formId = {id: 'bform1'};
-    const [aigene, setAigene] = useState('Your Response Will Appear Here');
+    const [isLoading, setLoad] = useState(false);
+    const [aigene, setAigene] = useState('Your response will appear here...');
     const [pSite, setpSite] = useState('');
     const [pBrand, setpBrand] = useState('');
     const [pBSite, setpBSite] = useState('');
@@ -18,9 +20,8 @@ export default function Brand1(){
 
         // try/catch to make the API call
         try {
+            setLoad(true);
             // useState values cleaning for pass to API
-            const styleList = pStyles.split(',').map((style) => style.trim());
-            const colorList = pColors.split(',').map((color) => color.trim());
             
             // API call to AI
             const response = await fetch('/api/ai/modelp', {
@@ -40,21 +41,22 @@ export default function Brand1(){
 
             // Logic to catch the resp error
             if (response.ok) {
-            const { myRes } = await response.json();
-            // Handle the data from the API response if needed
-            const { status, value } = myRes;
-            console.log(value);
-            setAigene(value);
-
+                const { myRes } = await response.json();
+                // Handle the data from the API response if needed
+                console.log(myRes);
+                setAigene(`${myRes}`);
+                setLoad(false);
 
             } else {
-            // Catch for an error in a response
-            console.error(`Error generating data:`, response.statusText);
+                // Catch for an error in a response
+                console.error(`Error generating data:`, response.statusText);
+                setLoad(false);
             }
             
         } catch (error) {
             // Catch for failure in the API call
             console.error(`Error generating data:`, error);
+            setLoad(false);
         };
 
     };
@@ -62,13 +64,15 @@ export default function Brand1(){
     if (session) {
         return (
             <main className={styles.form_main}>
-                    <h2>Where Do I Start?</h2>
-                    <form>
+                <h2>Brand Paragraph For Third-Party</h2>
+                <p>This form can be used to write a brand summary paragraph for a third-party brand.</p>
+                <form>
                     <label>Your Website
                         <input
                         type="text"
                         value={pSite}
                         onChange={(e) => setpSite(e.target.value)}
+                        placeholder='example.com'
                         />
                     </label>
                     <label>Product Brand
@@ -76,6 +80,7 @@ export default function Brand1(){
                         type="text"
                         value={pBrand}
                         onChange={(e) => setpBrand(e.target.value)}
+                        placeholder='Brand Name'
                         />
                     </label>
                     <label>Product Brand&#39;s Website
@@ -83,6 +88,7 @@ export default function Brand1(){
                         type="text"
                         value={pBSite}
                         onChange={(e) => setpBSite(e.target.value)}
+                        placeholder='brandname.com'
                         />
                     </label>
                     <label>Product Category
@@ -90,18 +96,19 @@ export default function Brand1(){
                         type="text"
                         value={pCategory}
                         onChange={(e) => setpCategory(e.target.value)}
+                        placeholder='product type'
                         />
                     </label>
                     <button type="button" onClick={handleGenerate}>
                         Write My Copy!
                     </button>
-                    </form>
-                    <AIGen respy={aigene} />
+                </form>
+                { isLoading ? (<Loading />) : (<AIGen respy={aigene} />)}
             </main>
         );
     } else {
         return (
-            <main className={styles.main}>
+            <main className={styles.form_main}>
                 <div>
                     <p>Please login again to view this AI form.</p>
                 </div>
