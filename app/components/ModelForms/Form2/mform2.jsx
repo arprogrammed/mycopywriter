@@ -14,7 +14,7 @@ export default function Form2(){
     const [pTitle, setpTitle] = useState('');
     const [pStyles, setpStyles] = useState('');
     const [pColors, setpColors] = useState('');
-    const [pCategory, setpCategory] = useState('');
+    const [pSiteCategory, setpSiteCategory] = useState('');
 
     // onClick function for API to generate copy
     const handleGenerate = async () => {
@@ -37,7 +37,7 @@ export default function Form2(){
                 pTitle,
                 pStyles: styleList,
                 pColors: colorList,
-                pCategory
+                pSiteCategory
                 // Pass other inputs in the object as needed
             }),
             });
@@ -102,12 +102,12 @@ export default function Form2(){
                         placeholder='orange, umber, etc'
                         />
                     </label>
-                    <label>Product Category
+                    <label>Website Product Category
                         <input
                         type="text"
-                        value={pCategory}
-                        onChange={(e) => setpCategory(e.target.value)}
-                        placeholder='product type'
+                        value={pSiteCategory}
+                        onChange={(e) => setpSiteCategory(e.target.value)}
+                        placeholder='website product category'
                         />
                     </label>
                     {/* Add more input fields here */}

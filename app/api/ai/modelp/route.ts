@@ -9,13 +9,13 @@ export async function POST(req: Request) {
 
     if (form == 'mform2') {
       try {
-        const { pSite, pTitle, pStyles, pColors, pCategory } = resp;
+        const { pSite, pTitle, pStyles, pColors, pSiteCategory } = resp;
         const styles = {pStyles: pStyles.join(', ')};
         const colors = {pColors: pColors.join(', ')};
 
-        const generatedData = await mform2(pSite, pTitle, styles.pStyles, colors.pColors, pCategory);
+        const generatedData = await mform2(pSite, pTitle, styles.pStyles, colors.pColors, pSiteCategory);
 
-        let myRes = await Promise.resolve(getResAI(generatedData));
+        let myRes = await Promise.resolve(getResAI(generatedData, form));
 
         if(myRes !== null) {
           return NextResponse.json({ myRes });
@@ -28,13 +28,13 @@ export async function POST(req: Request) {
       };
     } else if (form == 'mform3') {
       try {
-        const { pSite, pTitle, pStyles, pColors, pBrand, pBSite, pCategory } = resp;
+        const { pSite, pTitle, pStyles, pColors, pBrand, pBSite, pSiteCategory } = resp;
         const styles = {pStyles: pStyles.join(', ')};
         const colors = {pColors: pColors.join(', ')};
 
-        const generatedData = await mform3(pSite, pTitle, styles.pStyles, colors.pColors, pBrand, pBSite, pCategory);
+        const generatedData = await mform3(pSite, pTitle, styles.pStyles, colors.pColors, pBrand, pBSite, pSiteCategory);
 
-        let myRes = await Promise.resolve(getResAI(generatedData));
+        let myRes = await Promise.resolve(getResAI(generatedData, form));
 
         if(myRes !== null) {
           return NextResponse.json({ myRes });
@@ -47,11 +47,11 @@ export async function POST(req: Request) {
       };
     } else {
       try {
-        const { pSite, pBrand, pBSite, pCategory } = resp;
+        const { pSite, pBrand, pBSite, pSiteCategory } = resp;
 
-        const generatedData = await bform1(pSite, pBrand, pBSite, pCategory);
+        const generatedData = await bform1(pSite, pBrand, pBSite, pSiteCategory);
 
-        let myRes = await Promise.resolve(getResAI(generatedData));
+        let myRes = await Promise.resolve(getResAI(generatedData, form));
 
         if(myRes !== null) {
           return NextResponse.json({ myRes });

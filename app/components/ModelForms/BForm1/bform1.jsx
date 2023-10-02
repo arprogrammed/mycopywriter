@@ -13,7 +13,7 @@ export default function Brand1(){
     const [pSite, setpSite] = useState('');
     const [pBrand, setpBrand] = useState('');
     const [pBSite, setpBSite] = useState('');
-    const [pCategory, setpCategory] = useState('');
+    const [pSiteCategory, setpSiteCategory] = useState('');
 
     // onClick function for API to generate copy
     const handleGenerate = async () => {
@@ -34,7 +34,7 @@ export default function Brand1(){
                 pSite,
                 pBrand,
                 pBSite,
-                pCategory
+                pSiteCategory
                 // Pass other inputs in the object as needed
             }),
             });
@@ -91,12 +91,12 @@ export default function Brand1(){
                         placeholder='brandname.com'
                         />
                     </label>
-                    <label>Product Category
+                    <label>Website Product Category
                         <input
                         type="text"
-                        value={pCategory}
-                        onChange={(e) => setpCategory(e.target.value)}
-                        placeholder='product type'
+                        value={pSiteCategory}
+                        onChange={(e) => setSiteCategory(e.target.value)}
+                        placeholder='website product category'
                         />
                     </label>
                     <button type="button" onClick={handleGenerate}>

@@ -16,7 +16,7 @@ export default function Form3(){
     const [pColors, setpColors] = useState('');
     const [pBrand, setpBrand] = useState('');
     const [pBSite, setpBSite] = useState('');
-    const [pCategory, setpCategory] = useState('');
+    const [pSiteCategory, setpSiteCategory] = useState('');
 
     // onClick function for API to generate copy
     const handleGenerate = async () => {
@@ -42,7 +42,7 @@ export default function Form3(){
                 pColors: colorList,
                 pBrand,
                 pBSite,
-                pCategory
+                pSiteCategory
                 // Pass other inputs in the object as needed
             }),
             });
@@ -123,12 +123,12 @@ export default function Form3(){
                             placeholder='brandname.com'
                             />
                         </label>
-                        <label>Product Category
+                        <label>Website Product Category
                             <input
                             type="text"
-                            value={pCategory}
-                            onChange={(e) => setpCategory(e.target.value)}
-                            placeholder='product type'
+                            value={pSiteCategory}
+                            onChange={(e) => setpSiteCategory(e.target.value)}
+                            placeholder='website product category'
                             />
                         </label>
                         {/* Add more input fields here */}
