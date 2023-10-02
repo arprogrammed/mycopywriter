@@ -14,7 +14,9 @@ const Home: NextPage = () => {
       <div>
         <main className={styles.main}>
             <HeaderCust />
-            <div></div>
+            <div className={styles.beta}>
+              <h2>This is a Beta deployment of the application for the purpose of testing. Exclusive access only allowed.</h2>
+            </div>
             <FooterCust />
         </main>
       </div>
@@ -24,7 +26,9 @@ const Home: NextPage = () => {
       <div>
         <main className={styles.main}>
             <HeaderCust />
-            <div></div>
+            <div className={styles.beta}>
+              <h2>This is a Beta deployment of the application for the purpose of testing. Exclusive access only allowed.</h2>
+            </div>
             <FooterCust />
         </main>
       </div>

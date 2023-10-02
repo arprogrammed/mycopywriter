@@ -10,7 +10,7 @@ export default function FooterCust(){
             <div className={styles.stick}>
                 <div className={styles.gradient}></div>
                 <div className={styles.container}>
-                    <p className={kalam.className}>ASRDesigns&#169; 2023</p>
+                    <p className={kalam.className}>DBA CopyWriterAI&#169; 2023</p>
                 </div>
             </div>
         )
@@ -19,7 +19,7 @@ export default function FooterCust(){
             <div className={styles.stick}>
                 <div className={styles.gradient}></div>
                 <div className={styles.container}>
-                    <p className={kalam.className}>ASRDesigns&#169; 2023</p>
+                    <p className={kalam.className}>DBA CopyWriterAI&#169; 2023</p>
                 </div>
             </div>
         )
