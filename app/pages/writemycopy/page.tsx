@@ -8,6 +8,7 @@ import FooterCust from "@/app/components/Footer/footer";
 import Form3 from "@/app/components/ModelForms/Form3/mform3";
 import Form2 from "@/app/components/ModelForms/Form2/mform2";
 import Brand1 from "@/app/components/ModelForms/BForm1/bform1";
+import Brand2 from "@/app/components/ModelForms/BForm2/bform2";
 
 
 
@@ -26,6 +27,8 @@ const WriteMyCopy: NextPage = () => {
         return <Form3 />;
       case 'bform1':
         return <Brand1 />;
+      case 'bform2':
+        return <Brand2 />;
       default:
         return <Form2 />;
     }
@@ -40,6 +43,7 @@ const WriteMyCopy: NextPage = () => {
                 <option value="mform2">2 Paragraph 3rd-Party</option>
                 <option value="mform3">3 Paragraph 3rd-Party</option>
                 <option value="bform1">Brand Paragraph 3rd-Party</option>
+                <option value="bform2">Brand Paragraph</option>
               </select>
               {handleChange(formType)}
             </div>

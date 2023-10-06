@@ -39,7 +39,7 @@ export async function getResAI(model: string, form: string) {
     };
 
     let setParams: any;
-    if (form == 'bform1') {
+    if (form == 'bform1' || 'bform2') {
         setParams = params_1;
         console.log('BForm used.');
     } else if (form == 'mform2') {

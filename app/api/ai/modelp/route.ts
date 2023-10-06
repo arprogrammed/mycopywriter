@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       } catch (err) {
         NextResponse.json({ error: 'Error, Try Block, API MForm3',  err });
       };
-    } else {
+    } else if (form == 'bform1') {
       try {
         const { pSite, pBrand, pBSite, pSiteCategory } = resp;
 
@@ -62,7 +62,25 @@ export async function POST(req: Request) {
       } catch (err) {
         NextResponse.json({ error: 'Error, Try Block, API BForm',  err });
       };
-    };
+    } else {
+      try {
+        const { pSite, pBrand, pSiteCategory, pKeywords } = resp;
+        const keywords = {pKeywords: pKeywords.join(', ')};
+
+        const generatedData = await bform1(pSite, pBrand, pSiteCategory, keywords.pKeywords);
+
+        let myRes = await Promise.resolve(getResAI(generatedData, form));
+
+        if(myRes !== null) {
+          return NextResponse.json({ myRes });
+        } else {
+          return NextResponse.json({ error: 'Error Generating BForm2 Response' });
+        };
+
+      } catch (err) {
+        NextResponse.json({ error: 'Error, Try Block, API BForm2',  err });
+      };
+    }
   } catch (err) {
     NextResponse.json({ error: 'Error, Try Block, API POST Func',  err });
   };
