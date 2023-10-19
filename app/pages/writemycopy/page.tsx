@@ -18,7 +18,8 @@ const WriteMyCopy: NextPage = () => {
   // useState for formType selection
   const [ formType, setformType ] = useState('mform2');
 
-  // Handle user's form choice
+  // Handle users form choice for pulling correct module
+  // Toggles on the formId in each module and in the dropdown list "value"
   const handleChange = (fT: string) => {
     switch (fT) {
       case 'mform2':
@@ -50,7 +51,6 @@ const WriteMyCopy: NextPage = () => {
           <FooterCust />
           </main>
         );
-
   } else {
       return (
           <main className={styles.main}>

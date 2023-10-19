@@ -2,6 +2,8 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import Auth0Provider from "next-auth/providers/auth0";
 
+// Used the credientials provider in dev pre-Auth0.
+// Auth0 now primary client for authing user.
 const handler = NextAuth({
     session: { 
         strategy: "jwt" 

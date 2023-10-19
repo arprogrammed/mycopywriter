@@ -6,6 +6,7 @@ import React from 'react';
 import styles from './page.module.css';
 import Link from "next/link";
 
+// When using the dynamic route for Authing with credentials this will be a custom sign-in page.
 const SignIn: NextPage = (): JSX.Element => {
     const { data: session } = useSession()
 

@@ -2,6 +2,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import styles from './component.module.css'
 import { ubuntu } from "@/app/fonts";
 
+// Module used in header for dynamic auth call to providers.
 export default function LoginButt() {
   const { data: session } = useSession()
   

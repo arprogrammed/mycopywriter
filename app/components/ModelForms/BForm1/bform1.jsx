@@ -6,6 +6,7 @@ import AIGen from '@/app/components/GeneratedAIResp/respy';
 import Loading from '@/app/loading';
 
 export default function Brand1(){ 
+    // States and inputs
     const { data: session } = useSession();
     const formId = {id: 'bform1'};
     const [isLoading, setLoad] = useState(false);

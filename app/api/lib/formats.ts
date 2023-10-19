@@ -1,4 +1,5 @@
-
+// This file contains the prompts merged with user inputs from the API backend received via fetch.
+// Prompts below are exported to api modelp route.
 
 export async function mform3(pSite: string, pTitle: string, pStyle: string, pColors: string, pBrand: string, pBSite: string, pSiteCategory: string) {
 

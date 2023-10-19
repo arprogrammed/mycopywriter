@@ -1,8 +1,8 @@
 'use client'
 import { useSession } from 'next-auth/react';
-import { Link } from 'next/link';
 import styles from '@/app/components/ModelForms/component.module.css'
 
+// Module that is used for displaying the response on frontend in textarea box.
 export default function AIGen({ respy }) {
     const { data: session } = useSession()
 

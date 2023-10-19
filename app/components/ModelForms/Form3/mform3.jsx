@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import AIGen from '@/app/components/GeneratedAIResp/respy';
 import Loading from '@/app/loading';
 
-export default function Form3(){ 
+export default function Form3(){
+    // States and inputs 
     const { data: session } = useSession();
     const formId = {id: 'mform3'};
     const [isLoading, setLoad] = useState(false);

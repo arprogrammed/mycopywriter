@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description: 'An AI assistant that helps copywriting professionals work smarter!',
 }
 
+// AuthProvider imported and then wrapped sround children.
 export default function RootLayout({
   children,
 }: {

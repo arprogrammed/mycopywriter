@@ -2,21 +2,27 @@ import { NextResponse } from 'next/server';
 import { getResAI } from '../../lib/aitouch';
 import { mform2, mform3, bform1 } from '../../lib/formats';
 
+// Primary API route for formatting inputs into prompt passed to OpenAI, then resp passed to user.
 export async function POST(req: Request) {
   try {
+    // I use a formId located on each jsx form for logic in toggling prompt formats.
     const resp = await req.json();
     const form = resp.formId.id;
 
     if (form == 'mform2') {
       try {
+        // mform2 or Model Form 2 Paragrpah deconstruct
         const { pSite, pTitle, pStyles, pColors, pSiteCategory } = resp;
         const styles = {pStyles: pStyles.join(', ')};
         const colors = {pColors: pColors.join(', ')};
 
+        // form format via async imported function
         const generatedData = await mform2(pSite, pTitle, styles.pStyles, colors.pColors, pSiteCategory);
 
+        // async call to openai
         let myRes = await Promise.resolve(getResAI(generatedData, form));
 
+        // pass resp or err back to frontend
         if(myRes !== null) {
           return NextResponse.json({ myRes });
         } else {
@@ -28,14 +34,18 @@ export async function POST(req: Request) {
       };
     } else if (form == 'mform3') {
       try {
+        // mform3 or Model Form 3 Paragrpah deconstruct
         const { pSite, pTitle, pStyles, pColors, pBrand, pBSite, pSiteCategory } = resp;
         const styles = {pStyles: pStyles.join(', ')};
         const colors = {pColors: pColors.join(', ')};
-
+        
+        // form format via async imported function
         const generatedData = await mform3(pSite, pTitle, styles.pStyles, colors.pColors, pBrand, pBSite, pSiteCategory);
 
+        // async call to openai
         let myRes = await Promise.resolve(getResAI(generatedData, form));
 
+        // pass resp or err back to frontend
         if(myRes !== null) {
           return NextResponse.json({ myRes });
         } else {
@@ -47,12 +57,16 @@ export async function POST(req: Request) {
       };
     } else if (form == 'bform1') {
       try {
+        // bform1 or Brand Form 1 Paragrpah deconstruct
         const { pSite, pBrand, pBSite, pSiteCategory } = resp;
 
+        // form format via async imported function
         const generatedData = await bform1(pSite, pBrand, pBSite, pSiteCategory);
 
+        // async call to openai
         let myRes = await Promise.resolve(getResAI(generatedData, form));
 
+        // pass resp or err back to frontend
         if(myRes !== null) {
           return NextResponse.json({ myRes });
         } else {
@@ -64,13 +78,17 @@ export async function POST(req: Request) {
       };
     } else {
       try {
+        // bform2 or Brand Form 2 Paragrpah deconstruct
         const { pSite, pBrand, pSiteCategory, pKeywords } = resp;
         const keywords = {pKeywords: pKeywords.join(', ')};
 
+        // form format via async imported function
         const generatedData = await bform1(pSite, pBrand, pSiteCategory, keywords.pKeywords);
 
+        // async call to openai
         let myRes = await Promise.resolve(getResAI(generatedData, form));
 
+        // pass resp or err back to frontend
         if(myRes !== null) {
           return NextResponse.json({ myRes });
         } else {
@@ -87,7 +105,8 @@ export async function POST(req: Request) {
 };
 
 
-
+  // I had attempted the below switch logic but the gotcha in non-exiting properties of json made this unusable.
+  
   // Inputs deconstruction and clean/validation
   //   const { pSite, pTitle, pStyles, pColors, pBrand, pBSite, pCategory } = await req.json() || {};
   //   const styles = {pStyles: pStyles.join(', ')};

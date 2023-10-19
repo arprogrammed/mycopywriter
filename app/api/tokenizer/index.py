@@ -2,6 +2,8 @@ import tiktoken
 from flask import Flask, request
 app = Flask(__name__)
 
+# Flask wrapper for using this in a Next.js environment - decremented
+
 encoding = tiktoken.get_encoding("cl100k_base")
 encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
 
