@@ -2,33 +2,31 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+This web application is designed to be a mutli-form front-end with user inputs that are merged into pre-made formats for sending to OpenAI. The response from OpenAI is then received and displayed in the textarea box on each selected form. There is also an optional Stripe paywall integration. As such there are multiple ENV variables that will be needed for each part of the app to function.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**Needed ENV Variables:**
+NODE_ENV
+OPENAI_API_KEY
+AI_ORG_ID
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+NEXTAUTH_URL
+NEXTAUTH_SECRET
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+AUTH0_ISSUER
+AUTH0_CLIENT_ID
+AUTH0_CLIENT_SECRET
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+STRIPE_SECRET_KEY
 
-## Learn More
+## Current API For AI
 
-To learn more about Next.js, take a look at the following resources:
+This app utilizes several api calls. To the backend, OpenAI, Stripe, and Auth0. After forking you will need to have these app accounts setup and use your own account to access them.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project best displays my use of Next.js App Router, RestAPIs, a grasp of Promises and Await in Javascript, and React. Further you'll find that you can probably integrate a MongoDB step in the API to save responses and redeliver them on a per user basis, keyed into their emails from the session object.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deploy via Vercel
 
-## Deploy on Vercel
+This app was designed to deploy to Vercel with a .env.local file containing the envoironment variables. Feel free to re-design or make it your own. Add more functionality or just appreciate the code.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Email - anthony.r.programmer at gmail.com
+https://www.linkedin.com/in/anthony-ra1/

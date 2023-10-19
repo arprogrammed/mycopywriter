@@ -9,7 +9,8 @@ export async function POST(req: Request, res: Response) {
         // Cart session called and state passed in.
         const session = await stripe.checkout.sessions.create({
             line_items: [
-                {price: 'price_1NnmyWFhYCzdG6msVvrxTpLS', quantity: 1},
+                // ENTER YOUR PRICE OBJECT ID IN STRING FORM
+                {price: '', quantity: 1},
             ],
             mode: 'payment',
             success_url: `${process.env.AUTH0_ISSUER}/continue?state=${state}`,
